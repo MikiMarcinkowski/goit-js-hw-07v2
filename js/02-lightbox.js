@@ -9,7 +9,7 @@ const galeryItem = galleryItems
   .map(
     (item) =>
       `
-      
+      <li>
         <a class="gallery__item" href="${item.original}">
           <img
             class="gallery__image"
@@ -17,7 +17,7 @@ const galeryItem = galleryItems
             alt="${item.description}"
           />
         </a>
-      
+      </li>
     
       `
   )
