@@ -32,6 +32,12 @@ function openModal(event) {
     return;
   }
 
+  const onEscKeyDown = (event) => {
+    if (event.key == "Escape") {
+    instance.close();
+  }
+}
+
   const instance = basicLightbox.create(
     `
     <div class="modal">
@@ -39,20 +45,12 @@ function openModal(event) {
     </div>
 `,
     {
-      onShow: (instance) => {
-        document.addEventListener("keydown", (event) => {
-          if (event.key == "Escape") {
-            instance.close();
-          }
-        });
+      onShow: () => {
+        document.addEventListener('keydown', onEscKeyDown);
       },
 
-      onClose: (instance) => {
-        document.removeEventListener("keydown", (event) => {
-          if (event.key == "Escape") {
-            instance.close();
-          }
-        });
+      onClose: () => {
+        document.removeEventListener("keydown", onEscKeyDown);
       },
     }
   );
